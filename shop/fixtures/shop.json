@@ -1,0 +1,406 @@
+[
+{
+  "model": "shop.category",
+  "pk": 1,
+  "fields": {
+    "name": "hat",
+    "slug": "hat"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 2,
+  "fields": {
+    "name": "shirt",
+    "slug": "shirt"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 1,
+  "fields": {
+    "category": 1,
+    "name": "hat-one",
+    "image_url": "\"hat/one.jpeg\"",
+    "slug": "hat one",
+    "description": "hat super nice",
+    "price": "10.00",
+    "created": "2023-03-03T01:00:45Z",
+    "updated": "2023-03-07T01:00:45Z",
+    "sizes": null,
+    "compositions": null,
+    "colors": 1,
+    "brands": 1,
+    "sleeves": null,
+    "diversities": null,
+    "current_stock": 7,
+    "stock": 10,
+    "available": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 2,
+  "fields": {
+    "category": 1,
+    "name": "hat-two",
+    "image_url": "\"hat/two.jpeg\"",
+    "slug": "hat two",
+    "description": "hat super nice two",
+    "price": "12.00",
+    "created": "2023-03-04T01:00:45Z",
+    "updated": "2023-03-07T01:00:45Z",
+    "sizes": null,
+    "compositions": null,
+    "colors": 2,
+    "brands": 2,
+    "sleeves": null,
+    "diversities": null,
+    "current_stock": 10,
+    "stock": 10,
+    "available": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 3,
+  "fields": {
+    "category": 1,
+    "name": "hat-three",
+    "image_url": "\"hat/three.jpeg\"",
+    "slug": "hat three",
+    "description": "hat super nice three",
+    "price": "11.00",
+    "created": "2023-03-05T01:00:45Z",
+    "updated": "2023-03-07T01:00:45Z",
+    "sizes": null,
+    "compositions": null,
+    "colors": 3,
+    "brands": 3,
+    "sleeves": null,
+    "diversities": null,
+    "current_stock": 10,
+    "stock": 10,
+    "available": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 4,
+  "fields": {
+    "category": 1,
+    "name": "hat-four",
+    "image_url": "\"hat/four.jpeg\"",
+    "slug": "hat four",
+    "description": "hat super nice four",
+    "price": "10.00",
+    "created": "2023-03-06T01:00:45Z",
+    "updated": "2023-03-07T01:00:45Z",
+    "sizes": null,
+    "compositions": null,
+    "colors": 1,
+    "brands": 3,
+    "sleeves": null,
+    "diversities": null,
+    "current_stock": 10,
+    "stock": 10,
+    "available": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 5,
+  "fields": {
+    "category": 1,
+    "name": "hat-five",
+    "image_url": "\"hat/five.jpeg\"",
+    "slug": "hat five",
+    "description": "hat super nice five",
+    "price": "15.00",
+    "created": "2023-03-07T01:00:45Z",
+    "updated": "2023-03-07T01:00:45Z",
+    "sizes": null,
+    "compositions": null,
+    "colors": 3,
+    "brands": 2,
+    "sleeves": null,
+    "diversities": null,
+    "current_stock": 10,
+    "stock": 10,
+    "available": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 6,
+  "fields": {
+    "category": 2,
+    "name": "shirt-one",
+    "image_url": "\"shirt/one.jpeg\"",
+    "slug": "shirt one",
+    "description": "shirt performance",
+    "price": "22.00",
+    "created": "2023-03-03T01:00:45Z",
+    "updated": "2023-03-07T01:00:45Z",
+    "sizes": 2,
+    "compositions": 1,
+    "colors": 1,
+    "brands": 1,
+    "sleeves": false,
+    "diversities": 1,
+    "current_stock": 10,
+    "stock": 10,
+    "available": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 7,
+  "fields": {
+    "category": 2,
+    "name": "shirt-two",
+    "image_url": "\"shirt/two.jpeg\"",
+    "slug": "shirt two",
+    "description": "shirt performance two",
+    "price": "21.00",
+    "created": "2023-03-04T01:00:45Z",
+    "updated": "2023-03-07T01:00:45Z",
+    "sizes": 2,
+    "compositions": 1,
+    "colors": 2,
+    "brands": 1,
+    "sleeves": true,
+    "diversities": 1,
+    "current_stock": 10,
+    "stock": 10,
+    "available": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 8,
+  "fields": {
+    "category": 2,
+    "name": "shirt-three",
+    "image_url": "\"shirt/three.jpeg\"",
+    "slug": "shirt three",
+    "description": "shirt performance three",
+    "price": "30.00",
+    "created": "2023-03-05T01:00:45Z",
+    "updated": "2023-03-07T01:00:45Z",
+    "sizes": 3,
+    "compositions": 2,
+    "colors": 3,
+    "brands": 2,
+    "sleeves": false,
+    "diversities": 2,
+    "current_stock": 10,
+    "stock": 10,
+    "available": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 9,
+  "fields": {
+    "category": 2,
+    "name": "shirt-four",
+    "image_url": "\"shirt/four.jpeg\"",
+    "slug": "shirt four",
+    "description": "shirt performance four",
+    "price": "50.00",
+    "created": "2023-03-06T01:00:45Z",
+    "updated": "2023-03-07T01:00:45Z",
+    "sizes": 3,
+    "compositions": 3,
+    "colors": 1,
+    "brands": 3,
+    "sleeves": true,
+    "diversities": 2,
+    "current_stock": 10,
+    "stock": 10,
+    "available": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 10,
+  "fields": {
+    "category": 2,
+    "name": "shirt-five",
+    "image_url": "\"shirt/five.jpeg\"",
+    "slug": "shirt five",
+    "description": "shirt performance five",
+    "price": "17.00",
+    "created": "2023-03-07T01:00:45Z",
+    "updated": "2023-03-07T01:00:45Z",
+    "sizes": 3,
+    "compositions": 4,
+    "colors": 3,
+    "brands": 3,
+    "sleeves": true,
+    "diversities": 2,
+    "current_stock": 10,
+    "stock": 10,
+    "available": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 11,
+  "fields": {
+    "category": 2,
+    "name": "shirt-six",
+    "image_url": "\"shirt/six.jpeg\"",
+    "slug": "shirt six",
+    "description": "shirt performance six",
+    "price": "10.50",
+    "created": "2023-03-08T01:00:45Z",
+    "updated": "2023-03-08T01:00:45Z",
+    "sizes": 3,
+    "compositions": 2,
+    "colors": 3,
+    "brands": 2,
+    "sleeves": false,
+    "diversities": 2,
+    "current_stock": 10,
+    "stock": 10,
+    "available": true
+  }
+},
+{
+  "model": "shop.diversity",
+  "pk": 1,
+  "fields": {
+    "diversity": "male"
+  }
+},
+{
+  "model": "shop.diversity",
+  "pk": 2,
+  "fields": {
+    "diversity": "female"
+  }
+},
+{
+  "model": "shop.size",
+  "pk": 1,
+  "fields": {
+    "size_num": "small"
+  }
+},
+{
+  "model": "shop.size",
+  "pk": 2,
+  "fields": {
+    "size_num": "medium"
+  }
+},
+{
+  "model": "shop.size",
+  "pk": 3,
+  "fields": {
+    "size_num": "large"
+  }
+},
+{
+  "model": "shop.brand",
+  "pk": 1,
+  "fields": {
+    "brand": "puma"
+  }
+},
+{
+  "model": "shop.brand",
+  "pk": 2,
+  "fields": {
+    "brand": "adidas"
+  }
+},
+{
+  "model": "shop.brand",
+  "pk": 3,
+  "fields": {
+    "brand": "nike"
+  }
+},
+{
+  "model": "shop.color",
+  "pk": 1,
+  "fields": {
+    "primary_color": "white",
+    "secondary_color": "black",
+    "brand_color": "yellow"
+  }
+},
+{
+  "model": "shop.color",
+  "pk": 2,
+  "fields": {
+    "primary_color": "blue",
+    "secondary_color": "silver",
+    "brand_color": "green"
+  }
+},
+{
+  "model": "shop.color",
+  "pk": 3,
+  "fields": {
+    "primary_color": "black",
+    "secondary_color": "red",
+    "brand_color": "grey"
+  }
+},
+{
+  "model": "shop.composition",
+  "pk": 1,
+  "fields": {
+    "cotton": 100,
+    "linen": 0,
+    "hemp": 0,
+    "polyester": 0,
+    "nylon": 0,
+    "wool": 0,
+    "silk": 0
+  }
+},
+{
+  "model": "shop.composition",
+  "pk": 2,
+  "fields": {
+    "cotton": 10,
+    "linen": 10,
+    "hemp": 10,
+    "polyester": 10,
+    "nylon": 0,
+    "wool": 10,
+    "silk": 50
+  }
+},
+{
+  "model": "shop.composition",
+  "pk": 3,
+  "fields": {
+    "cotton": 0,
+    "linen": 0,
+    "hemp": 0,
+    "polyester": 100,
+    "nylon": 0,
+    "wool": 0,
+    "silk": 0
+  }
+},
+{
+  "model": "shop.composition",
+  "pk": 4,
+  "fields": {
+    "cotton": 15,
+    "linen": 15,
+    "hemp": 15,
+    "polyester": 15,
+    "nylon": 15,
+    "wool": 15,
+    "silk": 10
+  }
+}
+]

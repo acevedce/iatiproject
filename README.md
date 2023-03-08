@@ -23,7 +23,7 @@ To achive this, the easier way to handle a POC is with a small database as MySQL
 Please check th ER-Diagram file: 
 
 ```
-projectERDiagram.png
+ERDiagram.png
 ```
 
 

@@ -83,7 +83,9 @@ docker exec -it DOCKER_ID  /bin/bash
 Navigate to:
 
 ```
-cd /myapp/tests/flaskapp/api/resources
+apps = ["shop","orders"]
+
+cd /{apps}
 ```
 
 

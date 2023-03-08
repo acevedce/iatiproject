@@ -12,7 +12,11 @@ OBS: this API POC has CORS de-activated just for debug and developing purposes D
 
 To achive this, the easier way to handle a POC is with a small database as MySQL with a simple table (we can use another kind of DB as noSQL too, such as tinyDB)
 
-Please check th ER-Diagram file
+Please check th ER-Diagram file: 
+
+```
+projectERDiagram.png
+```
 
 
 

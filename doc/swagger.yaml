@@ -1,0 +1,648 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Challenge API
+  description: An API to return event list
+servers:
+  - url: http://localhost:8085
+tags:
+  - name: Products
+    description: Everything about the Products
+    externalDocs:
+      description: Find out Products
+      url: http://swagger.io  
+
+paths:
+  /products/:
+    post:
+      tags:
+      - "Products"
+      summary: "Create a new product"
+      parameters:
+      - name: "key"
+        in: "query"
+        description: "key authentication"
+        required: true
+        schema:
+          type: "string"
+          example: "b8f98489-b6eb-45d8-aafe-7332bf9a22a1"     
+      requestBody:
+        description: Create a product
+        content:
+          application/json:
+            schema:
+              type: "object"
+              required:
+                - "category"
+                - "name"
+                - "price"
+                - "avail_items"
+              properties:
+                category:
+                  type: "integer"
+                  example: 2
+                name:
+                  type: "string"
+                  example: "shirt-one"
+                image_url:
+                  type: "string"
+                  example: "shirt/one.jpeg"
+                slug:
+                  type: "string"
+                  example: "shirt one"
+                description:
+                  type: "string"
+                  example:  "shirt performance"
+                price:
+                  type: "string"
+                  example: "22.00"
+                sizes:
+                  type: "integer"
+                  example: 1
+                compositions:
+                  type: "integer"
+                  example: 1
+                colors:
+                  type: "integer"
+                  example: 1
+                brands:
+                  type: "integer"
+                  example: 1
+                sleeves: 
+                  type: "boolean"
+                  example: False
+                diversities:
+                  type: "integer"
+                  example: 1
+                current_stock: 
+                  type: "integer"
+                  example: 10
+                stock: 
+                  type: "integer"
+                  example: 10
+                available:
+                  type: "boolean"
+                  example: True
+                
+
+      responses:
+        "201":
+          description: "Prod creation"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    $ref: "#/components/schemas/List"
+                  status: 
+                    type: "object"
+                    example: null
+                    nullable: true
+        "400":
+          description: "The request was not correctly formed (missing required parameters, wrong types...)"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true
+                  status:
+                    $ref: "#/components/schemas/error"        
+        "500":
+          description: "Generic error"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true          
+                  status:
+                    $ref: "#/components/schemas/error"        
+    get:
+      tags:
+      - "Products"
+      summary: "List the available Products"
+      parameters:
+      - name: "key"
+        in: "query"
+        description: "key authentication"
+        required: true
+        schema:
+          type: "string"
+          example: "b8f98489-b6eb-45d8-aafe-7332bf9a22a1"      
+      responses:
+        "200":
+          description: "List of Products"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    $ref: "#/components/schemas/ListProd"
+                  status: 
+                    type: "object"
+                    example: null
+                    nullable: true
+        "400":
+          description: "The request was not correctly formed (missing required parameters, wrong types...)"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true
+                  status:
+                    $ref: "#/components/schemas/error"        
+        "500":
+          description: "Generic error"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true          
+                  status:
+                    $ref: "#/components/schemas/error"   
+                    
+  /products/{prod_id}/:
+    delete:
+      tags:
+      - "Products"
+      summary: "Delete a product will delete all on cascade from cart"
+      parameters:
+      - name: "key"
+        in: "query"
+        description: "key authentication"
+        required: true
+        schema:
+          type: "string"
+          example: "b8f98489-b6eb-45d8-aafe-7332bf9a22a1"      
+      - name: "prod_id"
+        in: path
+        description: ID product
+        required: true
+        schema:
+          type: "string"
+          example: "1"            
+      responses:
+        "200":
+          description: "Products detail"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    $ref: "#/components/schemas/SummaryProd"
+                  status: 
+                    type: "object"
+                    example: null
+                    nullable: true
+        "400":
+          description: "The request was not correctly formed (missing required parameters, wrong types...)"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true
+                  status:
+                    $ref: "#/components/schemas/error"        
+        "500":
+          description: "Generic error"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true          
+                  status:
+                    $ref: "#/components/schemas/error"        
+    get:
+      tags:
+      - "Products"
+      summary: "Products details"
+      parameters:
+      - name: "key"
+        in: "query"
+        description: "key authentication"
+        required: true
+        schema:
+          type: "string"
+          example: "b8f98489-b6eb-45d8-aafe-7332bf9a22a1"      
+      - name: "prod_id"
+        in: path
+        description: ID product
+        required: true
+        schema:
+          type: "string"
+          example: "1"          
+      responses:
+        "200":
+          description: "Products detail"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    $ref: "#/components/schemas/SummaryProd"
+                  status: 
+                    type: "object"
+                    example: null
+                    nullable: true
+        "400":
+          description: "The request was not correctly formed (missing required parameters, wrong types...)"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true
+                  status:
+                    $ref: "#/components/schemas/error"        
+        "500":
+          description: "Generic error"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true          
+                  status:
+                    $ref: "#/components/schemas/error"        
+
+
+
+  /order/checkout/:
+    post:
+      tags:
+      - "Checkout"
+      summary: "Checkout cart items according to orders"
+      parameters:
+      - name: "key"
+        in: "query"
+        description: "key authentication"
+        required: true
+        schema:
+          type: "string"
+          example: "b8f98489-b6eb-45d8-aafe-7332bf9a22a1"    
+      requestBody:
+        description: Create a product
+        content:
+          application/json:
+            schema:
+              type: "object"
+              required:
+                - "category"
+                - "name"
+                - "price"
+                - "avail_items"
+              properties:
+                first_name:
+                  type: "string"
+                  example: "Joe"
+                last_name:
+                  type: "string"
+                  example: "Doe"
+                address:
+                  type: "string"
+                  example: "Carrer Ma"
+                postal:
+                  type: "string"
+                  example: "cp0000"
+                email:
+                  type: "string"
+                  example:  "test@test.com"
+                phone:
+                  type: "string"
+                  example: "333-45465-4444"
+      responses:
+        "200":
+          description: "Detail"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    $ref: "#/components/schemas/SummaryProd"
+                  status: 
+                    type: "object"
+                    example: null
+                    nullable: true
+        "400":
+          description: "The request was not correctly formed (missing required parameters, wrong types...)"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true
+                  status:
+                    $ref: "#/components/schemas/error"        
+        "500":
+          description: "Generic error"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true          
+                  status:
+                    $ref: "#/components/schemas/error"        
+
+
+  /order/cart/{item_id}:
+    post:
+      tags:
+      - "Checkout"
+      summary: "Checkout cart items according to orders"
+      parameters:
+      - name: "key"
+        in: "query"
+        description: "key authentication"
+        required: true
+        schema:
+          type: "string"
+          example: "b8f98489-b6eb-45d8-aafe-7332bf9a22a1"      
+      - name: "item_id"
+        in: path
+        description: ID Checkout
+        required: true
+        schema:
+          type: "string"
+          example: "1"   
+      requestBody:
+        description: Create a product
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                quantity:
+                  type: "integer"
+                  example: 2
+
+      responses:
+        "200":
+          description: "Detail"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    $ref: "#/components/schemas/SummaryProd"
+                  status: 
+                    type: "object"
+                    example: null
+                    nullable: true
+        "400":
+          description: "The request was not correctly formed (missing required parameters, wrong types...)"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true
+                  status:
+                    $ref: "#/components/schemas/error"        
+        "500":
+          description: "Generic error"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true          
+                  status:
+                    $ref: "#/components/schemas/error"        
+
+  /order/cart/:
+    get:
+      tags:
+      - "Checkout"
+      summary: "Checkout cart items according to orders"
+      parameters:
+      - name: "key"
+        in: "query"
+        description: "key authentication"
+        required: true
+        schema:
+          type: "string"
+          example: "b8f98489-b6eb-45d8-aafe-7332bf9a22a1"      
+      responses:
+        "200":
+          description: "Detail"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    $ref: "#/components/schemas/SummaryProd"
+                  status: 
+                    type: "object"
+                    example: null
+                    nullable: true
+        "400":
+          description: "The request was not correctly formed (missing required parameters, wrong types...)"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true
+                  status:
+                    $ref: "#/components/schemas/error"        
+        "500":
+          description: "Generic error"
+          content:
+            'application/json' :
+              schema:
+                type: "object"
+                required:
+                - "result"
+                - "status"
+                properties:
+                  result:
+                    type: "object"
+                    example: null
+                    nullable: true          
+                  status:
+                    $ref: "#/components/schemas/error"   
+
+
+components:
+  schemas:
+
+    error:
+      type: "object"
+      required:
+      - "code"
+      - "description"
+      properties:
+        code:
+          type: "string"
+          description: "Error Code"
+        description:
+          type: "string"
+          description: "Details of error"
+          
+    List:
+      type: "object"
+      required:
+      - "products"
+      properties:
+        products:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Summary"
+        count:
+          type: "integer"
+          example: 1
+            
+    Summary:
+      type: "object"
+      required:
+      - "id"
+      - "items"
+      properties:
+        id:
+          type: "string"
+          example: "1"
+          description: "Identifier for the reservation"
+        items:
+          type: "string"
+          example: "1"
+          description: "shirt"
+
+    ListProd:
+      type: "object"
+      required:
+      - "Products"
+      properties:
+        Products:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SummaryProd"
+        count:
+          type: "integer"
+          example: 1
+            
+    SummaryProd:
+      type: "object"
+      required:
+      - "id"
+      - "price"
+      properties:
+        id:
+          type: "string"
+          example: "1"
+          description: "Identifier for the product"
+        price:
+          type: integer
+          example: 100
+          description: "Price of product"

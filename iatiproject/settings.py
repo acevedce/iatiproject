@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-pay)t3o1=om4m3_fjmmlqs70_sy_3r+_tl-@(crbya3f*en&0r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+CORS_ORIGIN_ALLOW_ALL = DEBUG
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "*"]
 
 
 # Application definition
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'shop',
     'orders'
 ]
@@ -48,6 +50,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 

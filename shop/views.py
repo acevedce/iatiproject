@@ -3,27 +3,30 @@
 from .models import Product, Category, Diversity, Size, Composition, Color, Brand
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+import json
 
 
 def create_product(request):
-    name = request.POST.get('name')
-    slug = request.POST.get('slug')
-    description= request.POST.get('description')
-    price = request.POST.get('price')
-    category = request.POST.get('category')
-    image_url = request.POST.get('image_url')
-    available = request.POST.get('available') 
-    brands = Brand.objects.filter(pk=int(request.POST.get('brands')))[0]
-    colors= Color.objects.filter(pk=int(request.POST.get('colors')))[0]
-    stock = request.POST.get('stock')
-    current_stock = request.POST.get('current_stock')
-    image_url = request.POST.get('image_url')
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    name = body['name']
+    slug = body['slug']
+    description= body['description']
+    price = body['price']
+    category = body['category']
+    image_url = body['image_url']
+    available = body['available']
+    brands = Brand.objects.filter(pk=int(body['brands']))[0]
+    colors= Color.objects.filter(pk=int(body['colors']))[0]
+    stock = body['stock']
+    current_stock = body['current_stock']
+    image_url = body['image_url']
     if int(category) == 2:
         category = Category.objects.filter(pk=int(category))[0]
-        diversities = Diversity.objects.filter(pk=int(request.POST.get('diversities')))[0]
-        sizes = Size.objects.filter(pk=int(request.POST.get('sizes')))[0]
-        sleeves = request.POST.get('sleeves')
-        compositions = Composition.objects.filter(pk=int(request.POST.get('compositions')))[0]
+        diversities = Diversity.objects.filter(pk=int(body['diversities']))[0]
+        sizes = Size.objects.filter(pk=int(body['sizes']))[0]
+        sleeves = body['sleeves']
+        compositions = Composition.objects.filter(pk=int(body['compositions']))[0]
     else:
         category = Category.objects.filter(pk=int(category))[0]
         diversities = None

@@ -33,6 +33,16 @@ services:
       MYSQL_DATABASE: project
       MYSQL_ROOT_PASSWORD: password
 
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: swagger_container
+    ports:
+        - "10000:8080"
+    volumes:
+        - ./doc:/usr/share/nginx/html/doc
+    environment:
+        URLS: "[{ url: \"doc/swagger.yaml\", name: \"swagger\" }, ]"
+        
 networks:
   backend:
     driver: bridge

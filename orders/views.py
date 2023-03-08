@@ -9,6 +9,7 @@ import datetime
 import random
 import string
 from django.http import JsonResponse
+import json
 
 session_id = settings.CART_SESSION_ID
 
@@ -31,7 +32,12 @@ def get_user_pending_order(request):
 def manage_cart(request, **kwargs):
     if request.method == "POST":
         product = Product.objects.filter(id=kwargs.get('item_id', "")).first()
-        quantity = int(request.POST.get('quantity', 1))
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        quantity = 1
+        if 'quantity' in body.keys():
+            quantity = body['quantity']
+        
         if quantity <= 0:
             #I PREFER USING METHOD DELETE
             return delete_from_cart(request, product, quantity)
@@ -110,6 +116,8 @@ def update_stock(request, order_items):
 
 def checkout(request, **kwargs):
     if request.method == "POST":
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
         # get the order being processed
         order_to_purchase = Order.objects.filter(owner=session_id, is_ordered=False)
         if order_to_purchase.exists():
@@ -126,12 +134,12 @@ def checkout(request, **kwargs):
                 return JsonResponse({"shipped":"One of the products is out of stock and has been removed from cart"})
             # create a transaction
             transaction = Transaction(profile=session_id,
-                                    first_name = request.POST.get('first_name', 'Joe'), 
-                                    last_name = request.POST.get('last_name', 'Doe'),
-                                    address= request.POST.get('address', 'unknown'),
-                                    postal = request.POST.get('postal', '0000'),
-                                    email = request.POST.get('email', 'none@none.com'),
-                                    phone = request.POST.get('phone', '0000-0000-0000'),
+                                    first_name = body['first_name'], 
+                                    last_name = body['last_name'],
+                                    address= body['address'],
+                                    postal = body['postal'],
+                                    email = body['email'],
+                                    phone = body['phone'],
                                     order_id=order_to_purchase.id,
                                     amount=order_to_purchase.get_cart_total(),
                                     success=True)

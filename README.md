@@ -1,9 +1,17 @@
 # Code Challenge
 
 Has the company should get millons of request, my idea is to provide a docker ready to deploy on cloud or cluster to scalate.
+
+
 I divided the source as:
+
+
 views: where all the business logic is done (this is a 1st step), the idea is to split the database controller into a different utility source and comsume from api controllers and logic
-models: as we want to have micro features, the 1st one is the search feature, but maybe in the future we would like to have adding, searching, updating, deleting and cross referencing to other products of the company, add a new feature should be as simple as registering a blueprint
+
+
+models: as we want to have micro features, the 1st one is the search feature, but maybe in the future we would like to have adding, searching, updating, deleting and cross referencing to other products of the company
+
+
 urls: the definition of the endpoints and resources
 
 OBS: this API POC has CORS de-activated just for debug and developing purposes DO NOT DEPLOY to PROD ENV

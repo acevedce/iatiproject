@@ -2,29 +2,19 @@
 
 Has the company should get millons of request, my idea is to provide a docker ready to deploy on cloud or cluster to scalate.
 I divided the source as:
-controllers: where all the business logic is done (this is a 1st step), the idea is to split the database controller into a different utility source and comsume from api controllers and logic
-resources: as we want to have micro features, the 1st one is the search feature, but maybe in the future we would like to have adding, searching, updating, deleting and cross referencing to other products of the company, add a new feature should be as simple as registering a blueprint
-views: the definition of the endpoints and resources
+views: where all the business logic is done (this is a 1st step), the idea is to split the database controller into a different utility source and comsume from api controllers and logic
+models: as we want to have micro features, the 1st one is the search feature, but maybe in the future we would like to have adding, searching, updating, deleting and cross referencing to other products of the company, add a new feature should be as simple as registering a blueprint
+urls: the definition of the endpoints and resources
 
-OBS: this API POC has CORS activated just for debug and developing purposes DO NOT DEPLOY to PROD ENV
-
-
-
-To achive this, the easier way to handle a POC is with a small database as PosgreSQL with a simple table (we can use another kind of DB as noSQL too, such as tinyDB)
+OBS: this API POC has CORS de-activated just for debug and developing purposes DO NOT DEPLOY to PROD ENV
 
 
-CREATE TABLE products (
-  products_id TEXT PRIMARY KEY,
-  prod_name TEXT,
-  price FLOAT,
-  avail_items INT
-);
 
-CREATE TABLE reservation (
-  products_id TEXT REFERENCES products (products_id) ON UPDATE CASCADE ON DELETE CASCADE,
-  reservation_id TEXT,
-  number_of_items INT
-);
+To achive this, the easier way to handle a POC is with a small database as MySQL with a simple table (we can use another kind of DB as noSQL too, such as tinyDB)
+
+Please check th ER-Diagram file
+
+
 
 ## Running the Service
 The service will be delivered via Docker. Running the following command will 
@@ -38,9 +28,28 @@ In order to develop a better solution, I take the freedom to use a DB to handle 
 docker-compose up --build
 ```
 
-You can connect to the database using the default user `postgres` with no password.
+You can populate the database using the default manage loaddata from django.
 
-If you change data in your database in a significant way ```rm -rf ./pg_data && docker-compose up --build```
+Get a docker list:
+
+```
+docker ps
+```
+
+Connect to the docker__web:
+
+```
+docker exec -it DOCKER_ID  /bin/bash
+```
+
+Load data
+
+```
+python manage.py loaddata /shop/fixture/shop.json
+```
+
+
+
 
 
 
